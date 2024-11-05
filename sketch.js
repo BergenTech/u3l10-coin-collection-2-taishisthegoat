@@ -118,6 +118,13 @@ function checkCoinCollection() {
 function checkCollisions() {
   // TODO: Check if player hits obstacle
   // HINT: Similar to coin collection
+  if (dist(playerX, playerY, obstacleX,obstacleY)<20){
+    hits ++
+    resetGame()
+    if (hits>=3){
+      gameOver()
+    }
+  }
   // If hit (distance < 20):
   //   - Increase hits
   //   - Check for game over (hits >= 3)
@@ -155,6 +162,11 @@ function resetGame() {
   // HINT: Reset score, hits, speed
   // Set gameOver to false
   // Call initializeGame()
+  gameOver = false
+  initializeGame()
+  score = 0
+  obstacleSpeed = 1
+  hits = 0
 }
 
 function keyPressed() {
