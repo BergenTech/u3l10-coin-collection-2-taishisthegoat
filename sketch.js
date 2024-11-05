@@ -30,6 +30,7 @@ function draw() {
   
   if (gameOver) {
     displayGameOver();
+    keyPressed()
   } else {
     // Draw game elements
     drawPlayer();
@@ -119,10 +120,10 @@ function checkCollisions() {
   // TODO: Check if player hits obstacle
   // HINT: Similar to coin collection
   if (dist(playerX, playerY, obstacleX,obstacleY)<20){
-    hits ++
+    hits++
     resetGame()
     if (hits>=3){
-      gameOver()
+      gameOver = true
     }
   }
   // If hit (distance < 20):
@@ -142,7 +143,16 @@ function displayStats() {
   // TODO: Add display for hits and speed
 }
 
-function displayGameOver() {
+function displayGameOver(){
+  textAlign(200,300)
+  fill(0)
+  textSize(40)
+  fill(0)
+  text("Game Over")
+  textSize(20)
+  text("Final Score:" + score)
+  textSize(15)
+  text("Press R to Restart")
   // TODO: Show game over screen
   // HINT: Use textAlign(CENTER, CENTER)
   // Show:
@@ -162,17 +172,18 @@ function resetGame() {
   // HINT: Reset score, hits, speed
   // Set gameOver to false
   // Call initializeGame()
-  gameOver = false
   initializeGame()
   score = 0
   obstacleSpeed = 1
-  hits = 0
 }
 
 function keyPressed() {
   // TODO: Check for 'R' key to restart game
   // HINT: Use key === 'r' || key === 'R'
   // Only works when game is over
+  if (key == 'r'||key == 'R'){
+    resetGame()
+  }
 }
 
 // Helper function you might need
